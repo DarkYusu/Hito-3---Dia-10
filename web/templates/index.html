@@ -1,6 +1,6 @@
-{% block 'base' %}
-{% include 'base.html' %}
-<div class="container mt-5">
+{% extends 'base.html' %}
+{% block template %}
+<div class="container-fluid">
     <h1 class="text-center">Flanes Públicos</h1>
     <div class="row">
         {% for flan in flanes %}
