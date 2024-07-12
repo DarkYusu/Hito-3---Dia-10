@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+
+{% block template %}
+<div>
+    <form action="/contacto/" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Submit">
+    </form>
+</div>
+{% endblock %}

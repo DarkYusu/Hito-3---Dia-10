@@ -1,5 +1,7 @@
 from django.shortcuts import render
-from .models import Flan
+from django.http import HttpResponse, HttpResponseRedirect
+from .models import Flan, ContactForm
+from .forms import ContactFormForm
 
 # Create your views here.
 
@@ -18,3 +20,16 @@ def bienvenido(request):
 
 def base1(request):
     return render(request, 'base.html', {})
+
+def success(request):
+    return render(request, 'exito.html', {})
+
+def contacto(request):
+    if request.method == 'POST':
+        form = ContactFormForm(request.POST)
+        if form.is_valid():
+            contact_form = ContactForm.objects.create(**form.cleaned_data)
+            return HttpResponseRedirect('/exito')
+    else:
+        form = ContactFormForm()   
+    return render(request, 'contacto.html',{'form':form})
