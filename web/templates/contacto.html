@@ -2,11 +2,51 @@
 
 
 {% block template %}
-<div>
+<div class="col-12 col-md-6 offset-0 offset-md-3 mt-4 mb-4">
+    <div class="text-center">
+        <h3>Contactanos</h3>
+    </div>
+</div>
+
     <form action="/contacto/" method="post">
         {% csrf_token %}
-        {{ form }}
-        <input type="submit" value="Submit">
+        {{ form.non_field_error }}
+        <div class="mb-3 text-center">
+            <label for="{{ form.customer_name.id_for_label }}" class="form-label">
+                {{ form.customer_name.label_tag }}
+            </label>
+            <div class="mb-3 text-center">
+                {{ form.customer_name }}
+            </div>
+            <div class="text-center">
+                {{ form.customer_name.errors }}
+            </div>
+        </div>
+        <div class="mb-3 text-center">
+            <label for="{{ form.customer_email.id_for_label }}" class="form-label">
+                {{ form.customer_email.label_tag }}
+            </label>
+            <div class="mb-3 text-center">
+                {{ form.customer_email }}
+            </div>
+            <div class="text-center">
+                {{ form.customer_email.errors }}
+            </div>
+            
+        </div>
+        <div class="mb-3 text-center">
+            <label for="{{ form.message.id_for_label }}" class="form-label">
+                {{ form.message.label_tag }}
+            </label>
+            <div class="mb-3 text-center">
+                {{ form.message }}
+            </div>
+            <div class="text-center">
+                {{ form.message.errors }}
+            </div>
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </div>
+        
     </form>
-</div>
+
 {% endblock %}
