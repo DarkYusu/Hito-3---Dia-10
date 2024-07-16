@@ -1,5 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
 from .models import Flan, ContactForm
 # from .forms import ContactFormForm
 from .forms import ContactFormModelForm
@@ -44,3 +46,7 @@ def contacto(request):
     else:
         form = ContactFormModelForm()   
     return render(request, 'contacto.html',{'form':form})
+
+def salir(request):
+    logout(request)
+    return redirect('/')

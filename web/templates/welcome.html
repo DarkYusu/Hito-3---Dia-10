@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
 {% block template %}
+{% load static %}
+    <!-- Si el usuario esta logeado podra ver los flanes Privados -->
+    {% if request.user.is_authenticated %}
     <h1 class="text-center">Flanes Privados</h1>
         <div class="row">
             {% for flan in flanes %}
@@ -14,4 +17,12 @@
             </div>
             {% endfor %}
         </div>
+    <!-- de lo contrario se vera un mensaje pidiendole autenticarse -->
+    {% else%}
+    <div class="text-center">
+        <h1 class="">Usted no tiene Acceso a estos Flanes T_T</h1>
+        <img src="{% static 'img/tenor.gif'%}" class="text-center" alt="">
+    </div>     
+    {% endif %}
+
 {% endblock %}

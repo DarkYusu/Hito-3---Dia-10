@@ -20,6 +20,18 @@
           <li class="nav-item">
             <a class="nav-link" href="/contacto">Contacto</a>
           </li>
+          <!-- Ajuste de Inicio de Seccion -->
+          {% if request.user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'logout' %}">Cerrar Sección</a>
+            </li>
+          <!-- Si el usuario no esta Logeado -->
+          {% else %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'login' %}">Inciar Sección</a>
+            </li>
+          {% endif %}
+
         </ul>
       </div>
     </div>
