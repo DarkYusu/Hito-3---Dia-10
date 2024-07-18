@@ -23,12 +23,12 @@
           <!-- Ajuste de Inicio de Seccion -->
           {% if request.user.is_authenticated %}
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'logout' %}">Cerrar Sección</a>
+              <a class="nav-link" href="{% url 'logout' %}">Cerrar sesión</a>
             </li>
           <!-- Si el usuario no esta Logeado -->
           {% else %}
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'login' %}">Inciar Sección</a>
+              <a class="nav-link" href="{% url 'login' %}">Inciar sesión</a>
             </li>
           {% endif %}
 
